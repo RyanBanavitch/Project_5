@@ -9,7 +9,7 @@ public final class Background
 {
     private String id;
     private List<PImage> images;
-    private int imageIndex;
+    //private int imageIndex;
 
     public Background(String id, List<PImage> images) {
         this.id = id;
@@ -20,12 +20,12 @@ public final class Background
         return images;
     }
 
-    public int getImageIndex() {
-        return imageIndex;
-    }
+    //public int getImageIndex() {
+//        return imageIndex;
+//    }
 
     public PImage getCurrentImage() {
-            return this.getImages().get(this.getImageIndex());
+            return this.getImages().get(0);
         }
 
 }

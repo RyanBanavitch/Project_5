@@ -82,6 +82,24 @@ public final class VirtualWorld extends PApplet
     // Just for debugging and for P5
     public void mousePressed() {
         Point pressed = mouseToPoint(mouseX, mouseY);
+        Point right = new Point(pressed.x + 1, pressed.y);
+        Point left = new Point(pressed.x - 1, pressed.y);
+        Point top = new Point(pressed.x, pressed.y - 1);
+        Point bottom = new Point(pressed.x, pressed.y + 1);
+        Point topR = new Point(pressed.x + 1, pressed.y - 1);
+        Point topL = new Point(pressed.x - 1, pressed.y - 1);
+        Point bottomR = new Point(pressed.x + 1, pressed.y + 1);
+        Point bottomL = new Point(pressed.x - 1, pressed.y + 1);
+        this.world.setBackgroundCell(pressed, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(right, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(left, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(top, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(bottom, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(topR, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(topL, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(bottomR, new Background("void", imageStore.getImageList("void")));
+        this.world.setBackgroundCell(bottomL, new Background("void", imageStore.getImageList("void")));
+
         System.out.println("CLICK! " + pressed.getX() + ", " + pressed.getY());
 
         Optional<Entity> entityOptional = world.getOccupant(pressed);

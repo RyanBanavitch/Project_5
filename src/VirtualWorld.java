@@ -91,14 +91,38 @@ public final class VirtualWorld extends PApplet
         Point bottomR = new Point(pressed.x + 1, pressed.y + 1);
         Point bottomL = new Point(pressed.x - 1, pressed.y + 1);
         this.world.setBackgroundCell(pressed, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(right, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(left, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(top, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(bottom, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(topR, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(topL, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(bottomR, new Background("void", imageStore.getImageList("void")));
-        this.world.setBackgroundCell(bottomL, new Background("void", imageStore.getImageList("void")));
+        if(this.world.withinBounds(right))
+        {
+            this.world.setBackgroundCell(right, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(left))
+        {
+            this.world.setBackgroundCell(left, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(top))
+        {
+            this.world.setBackgroundCell(top, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(bottom))
+        {
+            this.world.setBackgroundCell(bottom, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(topR))
+        {
+            this.world.setBackgroundCell(topR, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(topL))
+        {
+            this.world.setBackgroundCell(topL, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(bottomR))
+        {
+            this.world.setBackgroundCell(bottomR, new Background("void", imageStore.getImageList("void")));
+        }
+        if(this.world.withinBounds(bottomL))
+        {
+            this.world.setBackgroundCell(bottomL, new Background("void", imageStore.getImageList("void")));
+        }
 
         System.out.println("CLICK! " + pressed.getX() + ", " + pressed.getY());
 

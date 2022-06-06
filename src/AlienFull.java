@@ -4,10 +4,12 @@ import java.util.List;
 
 public class AlienFull extends Dudes{
 
+    private final Point start;
 
-    public AlienFull(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod, int resourceLimit)
+    public AlienFull(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod, int resourceLimit, Point start)
     {
         super(id, position, images, actionPeriod, animationPeriod, resourceLimit);
+        this.start = start;
     }
 
     @Override

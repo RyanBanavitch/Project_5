@@ -58,5 +58,15 @@ public class Factory {
         return new DudeFull(id, position, images, actionPeriod, animationPeriod, resourceLimit);
     }
 
+    public static AlienFull createAlienFull(String id, Point position, int actionPeriod, int animationPeriod, int resourceLimit, List<PImage> images, Point start)
+    {
+        return new AlienFull(id, position, images, actionPeriod, animationPeriod, resourceLimit, start);
+    }
+
+    public static AlienNotFull createAlienNotFull(String id, Point position, int actionPeriod, int animationPeriod, int resourceLimit, List<PImage> images, Point start)
+    {
+        return new AlienNotFull(id, position, images, actionPeriod, animationPeriod, resourceLimit, 0, start);
+    }
+
 
 }

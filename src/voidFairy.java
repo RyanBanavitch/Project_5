@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-public class voidFairy extends Movable{
+public class VoidFairy extends Movable{
 
-    public voidFairy(String id, Point position, List<PImage> images, int imageIndex, int animationPeriod, int actionPeriod) {
+    public VoidFairy(String id, Point position, List<PImage> images, int imageIndex, int animationPeriod, int actionPeriod) {
         super(id, position, images, imageIndex, animationPeriod, actionPeriod);
     }
 

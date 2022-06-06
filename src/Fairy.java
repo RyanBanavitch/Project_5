@@ -29,38 +29,6 @@ public class Fairy extends Movable{
                 this.getActionPeriod());
     }
 
-
-
-
-//    @Override
-//    public Point nextPosition(
-//            WorldModel world, Point destPos)
-//    {
-//        PathingStrategy strat = new SingleStepPathingStrategy();
-//        Predicate<Point> canPassThrough = (p) -> _canPassThrough(world, p);
-//        BiPredicate<Point, Point> withinReach = (p, p2) -> WorldInfo.adjacent(p, p2);
-//        Function<Point, Stream<Point>> potentialNeighbors = PathingStrategy.CARDINAL_NEIGHBORS;
-//        List<Point> path = strat.computePath(this.getPosition(), destPos, canPassThrough, withinReach, potentialNeighbors);
-//        if (path.size() == 0)
-//            return this.getPosition();
-//        else
-//            return path.get(0);
-
-//        int horiz = Integer.signum(destPos.getX() - this.getPosition().getX());
-//        Point newPos = new Point(this.getPosition().getX() + horiz, this.getPosition().getY());
-//
-//        if (horiz == 0 || world.isOccupied(newPos)) {
-//            int vert = Integer.signum(destPos.getY() - this.getPosition().getY());
-//            newPos = new Point(this.getPosition().getX(), this.getPosition().getY() + vert);
-//
-//            if (vert == 0 || world.isOccupied(newPos)) {
-//                newPos = this.getPosition();
-//            }
-//        }
-//
-//        return newPos;
-//    }
-
     public boolean _canPassThrough(WorldModel world, Point p) {
         return world.withinBounds(p) && !world.isOccupied(p);
     }

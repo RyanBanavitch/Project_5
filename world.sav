@@ -323,6 +323,7 @@ background grass 1 8
 background grass 2 8
 background grass 3 8
 background bridge 4 8
+background bridge 9 4
 background grass 5 8
 background grass 6 8
 background flowers 7 8
@@ -1198,10 +1199,38 @@ background grass 36 29
 background flowers 37 29
 background flowers 38 29
 background flowers 39 29
+obstacle obstacle_0_0 0 0 1126
+obstacle obstacle_0_1 0 1 1124
+obstacle obstacle_1_0 1 0 1122
+obstacle obstacle_1_1 1 1 1100
+obstacle obstacle_1_1 2 1 1100
+obstacle obstacle_1_1 1 2 1100
+obstacle obstacle_1_1 0 3 1100
+obstacle obstacle_1_1 3 0 1100
+obstacle obstacle_1_1 2 0 1100
+obstacle obstacle_1_1 0 2 1100
+obstacle obstacle_1_1 4 0 1100
+obstacle obstacle_1_1 5 0 1100
+obstacle obstacle_1_1 6 1 1100
+obstacle obstacle_1_1 7 1 1100
+obstacle obstacle_1_1 8 1 1100
+obstacle obstacle_1_1 9 1 1100
+obstacle obstacle_1_1 10 1 1100
+obstacle obstacle_1_1 6 0 1100
+obstacle obstacle_1_1 7 0 1100
+obstacle obstacle_1_1 8 0 1100
+obstacle obstacle_1_1 8 2 1100
+obstacle obstacle_1_1 9 2 1100
+obstacle obstacle_1_1 9 3 1100
+obstacle obstacle_1_1 9 5 1100
+obstacle obstacle_1_1 9 6 1100
+obstacle obstacle_1_1 8 6 1100
+obstacle obstacle_1_1 9 0 1100
+obstacle obstacle_1_1 10 0 1100
 tree tree_35_27 35 27 256 1168 2
 tree tree_35_25 35 25 144 1266 2
 obstacle obstacle_13_7 13 7 1126
-fairy fairy_0_0 0 0 51 51
+fairy fairy_0_0 4 2 51 51
 tree tree_0_2 0 2 501 1289 2
 obstacle obstacle_17_9 17 9 1105
 tree tree_30_6 30 6 50 1006 2
@@ -1226,8 +1255,6 @@ obstacle obstacle_22_14 22 14 1108
 obstacle obstacle_36_20 36 20 1104
 tree tree_18_4 18 4 513 1330 2
 tree tree_2_25 2 25 93 1041 2
-tree tree_26_1 26 1 129 1231 1
-tree tree_1_1 1 1 419 1335 1
 tree tree_16_4 16 4 187 1253 2
 tree tree_7_3 7 3 438 1354 2
 tree tree_27_8 27 8 160 1328 1

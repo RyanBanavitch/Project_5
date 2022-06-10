@@ -73,5 +73,8 @@ public class Factory {
         return new DeadTree(id, position, images);
     }
 
+    public static VoidFairy createVoidFairy(String id, Point position, int actionPeriod, int animationPeriod, List<PImage> images){
+        return new VoidFairy(id, position, images, actionPeriod, animationPeriod);
+    }
 
 }

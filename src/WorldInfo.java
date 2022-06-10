@@ -68,6 +68,14 @@ public final class WorldInfo
     public static final int FAIRY_ANIMATION_PERIOD = 4;
     public static final int FAIRY_ACTION_PERIOD = 5;
 
+    public static final String Void_FAIRY_KEY = "void_fairy";
+    public static final int VOID_FAIRY_NUM_PROPERTIES = 6;
+    public static final int VOID_FAIRY_ID = 1;
+    public static final int VOID_FAIRY_COL = 2;
+    public static final int VOID_FAIRY_ROW = 3;
+    public static final int VOID_FAIRY_ANIMATION_PERIOD = 4;
+    public static final int VOID_FAIRY_ACTION_PERIOD = 5;
+
     public static final String STUMP_KEY = "stump";
 
     public static final String TREE_KEY = "tree";

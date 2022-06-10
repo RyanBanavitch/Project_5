@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public class VoidFairy extends Movable{
 
-    public VoidFairy(String id, Point position, List<PImage> images, int imageIndex, int animationPeriod, int actionPeriod) {
-        super(id, position, images, imageIndex, animationPeriod, actionPeriod);
+    public VoidFairy(String id, Point position, List<PImage> images, int animationPeriod, int actionPeriod) {
+        super(id, position, images, 0, animationPeriod, actionPeriod);
     }
 
     public void _scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
@@ -24,19 +24,23 @@ public class VoidFairy extends Movable{
     {
         Optional<Entity> fairyTarget =
                 //change this to the dead tree class instead of stump
-                world.findNearest(this.getPosition(), new ArrayList<>(Arrays.asList(Stump.class)));
+                world.findNearest(this.getPosition(), new ArrayList<>(Arrays.asList(DeadTree.class)));
 
         if (fairyTarget.isPresent()) {
             Point tgtPos = fairyTarget.get().getPosition();
 
             if (this.moveTo(world, fairyTarget.get(), scheduler)) {
                 // create a live tree, not sapling
-                Sapling sapling = Factory.createSapling("sapling_" + this.getId(), tgtPos,
-                        imageStore.getImageList(WorldInfo.SAPLING_KEY));
+                Tree tree = Factory.createTree("tree_" + this.getId(),
+                        tgtPos,
+                        WorldInfo.getNumFromRange(WorldInfo.TREE_ACTION_MAX, WorldInfo.TREE_ACTION_MIN),
+                        WorldInfo.getNumFromRange(WorldInfo.TREE_ANIMATION_MAX, WorldInfo.TREE_ANIMATION_MIN),
+                        WorldInfo.getNumFromRange(WorldInfo.TREE_HEALTH_MAX, WorldInfo.TREE_HEALTH_MIN),
+                        imageStore.getImageList(WorldInfo.TREE_KEY));
                 //add the tree to world
-                world.addEntity(sapling);
+                world.addEntity(tree);
                 //deadTree.scedule.....
-                sapling.scheduleActions(scheduler, world, imageStore);
+                tree.scheduleActions(scheduler, world, imageStore);
             }
         }
 

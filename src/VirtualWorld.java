@@ -91,38 +91,87 @@ public final class VirtualWorld extends PApplet
         Point bottomR = new Point(pressed.x + 1, pressed.y + 1);
         Point bottomL = new Point(pressed.x - 1, pressed.y + 1);
         this.world.setBackgroundCell(pressed, new Background("void", imageStore.getImageList("void")));
+        if(this.world.isOccupied(pressed) && this.world.getOccupancyCell(pressed).getClass() != Fairy.class && this.world.getOccupancyCell(pressed).getClass() != DudeNotFull.class && this.world.getOccupancyCell(pressed).getClass() != DudeFull.class)
+        {
+            this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(pressed));
+            this.world.removeEntityAt(pressed);
+        }
         if(this.world.withinBounds(right))
         {
             this.world.setBackgroundCell(right, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(right) && this.world.getOccupancyCell(right).getClass() != Fairy.class && this.world.getOccupancyCell(right).getClass() != DudeNotFull.class && this.world.getOccupancyCell(right).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(right));
+                this.world.removeEntityAt(right);
+            }
         }
         if(this.world.withinBounds(left))
         {
             this.world.setBackgroundCell(left, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(left) && this.world.getOccupancyCell(left).getClass() != Fairy.class && this.world.getOccupancyCell(left).getClass() != DudeNotFull.class && this.world.getOccupancyCell(left).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(left));
+                this.world.removeEntityAt(left);
+            }
         }
         if(this.world.withinBounds(top))
         {
             this.world.setBackgroundCell(top, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(top) && this.world.getOccupancyCell(top).getClass() != Fairy.class && this.world.getOccupancyCell(top).getClass() != DudeNotFull.class && this.world.getOccupancyCell(top).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(top));
+                this.world.removeEntityAt(top);
+            }
         }
         if(this.world.withinBounds(bottom))
         {
             this.world.setBackgroundCell(bottom, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(bottom) && this.world.getOccupancyCell(bottom).getClass() != Fairy.class && this.world.getOccupancyCell(bottom).getClass() != DudeNotFull.class && this.world.getOccupancyCell(bottom).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(bottom));
+                this.world.removeEntityAt(bottom);
+            }
         }
         if(this.world.withinBounds(topR))
         {
             this.world.setBackgroundCell(topR, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(topR) && this.world.getOccupancyCell(topR).getClass() != Fairy.class && this.world.getOccupancyCell(topR).getClass() != DudeNotFull.class && this.world.getOccupancyCell(topR).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(topR));
+                this.world.removeEntityAt(topR);
+            }
         }
         if(this.world.withinBounds(topL))
         {
             this.world.setBackgroundCell(topL, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(topL) && this.world.getOccupancyCell(topL).getClass() != Fairy.class && this.world.getOccupancyCell(topL).getClass() != DudeNotFull.class && this.world.getOccupancyCell(topL).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(topL));
+                this.world.removeEntityAt(topL);
+            }
         }
         if(this.world.withinBounds(bottomR))
         {
             this.world.setBackgroundCell(bottomR, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(bottomR) && this.world.getOccupancyCell(bottomR).getClass() != Fairy.class && this.world.getOccupancyCell(bottomR).getClass() != DudeNotFull.class && this.world.getOccupancyCell(bottomR).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(bottomR));
+                this.world.removeEntityAt(bottomR);
+            }
         }
         if(this.world.withinBounds(bottomL))
         {
             this.world.setBackgroundCell(bottomL, new Background("void", imageStore.getImageList("void")));
+            if(this.world.isOccupied(bottomL) && this.world.getOccupancyCell(bottomL).getClass() != Fairy.class && this.world.getOccupancyCell(bottomL).getClass() != DudeNotFull.class && this.world.getOccupancyCell(bottomL).getClass() != DudeFull.class)
+            {
+                this.scheduler.unscheduleAllEvents(this.world.getOccupancyCell(bottomL));
+                this.world.removeEntityAt(bottomL);
+            }
         }
+
+        AlienNotFull alien = Factory.createAlienNotFull("alien", pressed, WorldInfo.ALIEN_ACTION_PERIOD, WorldInfo.ALIEN_ANIMATION_PERIOD, WorldInfo.ALIEN_LIMIT, this.imageStore.getImageList(WorldInfo.ALIEN_KEY), pressed);
+        this.world.addEntity(alien);
+        alien.scheduleActions(this.scheduler, this.world, this.imageStore);
 
         System.out.println("CLICK! " + pressed.getX() + ", " + pressed.getY());
 

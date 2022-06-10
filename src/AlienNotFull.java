@@ -29,51 +29,59 @@ public class AlienNotFull extends Dudes{
             ImageStore imageStore,
             EventScheduler scheduler)
     {
-//        Optional<Entity> target =
-//                world.findNearest(this.getPosition(), new ArrayList<>(Arrays.asList(Tree.class, Sapling.class)));
-//
-//        if (!target.isPresent() || !this.moveTo(world,
-//                (Target)(target.get()),
-//                scheduler)
-//                || !this.transformNotFull(world, scheduler, imageStore))
-//        {
-//            scheduler.scheduleEvent(this,
-//                    Factory.createActivityAction(this, world, imageStore),
-//                    this.getActionPeriod());
-//        }
+        Optional<Entity> target =
+                world.findNearest(this.getPosition(), new ArrayList<>(Arrays.asList(Tree.class)));
+
+        if (!target.isPresent() || !this.moveTo(world,
+                (Target)(target.get()),
+                scheduler)
+                || !this.transformAlienNotFull(world, scheduler, imageStore))
+        {
+            scheduler.scheduleEvent(this,
+                    Factory.createActivityAction(this, world, imageStore),
+                    this.getActionPeriod());
+        }
     }
 
     public boolean _canPassThrough(WorldModel world, Point p) {
-        return world.withinBounds(p) && (!world.isOccupied(p) || world.getOccupancyCell(p).getClass() == Stump.class);
+        return world.withinBounds(p) && (!world.isOccupied(p));
     }
 
     @Override
     protected boolean _moveTo(WorldModel world, Entity target, EventScheduler scheduler) {
-        return false;
+        this.resourceCount += 1;
+        ((Tree)target).setHealth(-99);
+        return true;
     }
 
 
-//    public boolean transformNotFull(
-//            WorldModel world,
-//            EventScheduler scheduler,
-//            ImageStore imageStore)
-//    {
-//        if (this.resourceCount >= this.getResourceLimit()) {
-//            DudeFull miner = Factory.createDudeFull(this.getId(),
-//                    this.getPosition(), this.getActionPeriod(),
-//                    this.getAnimationPeriod(),
-//                    this.getResourceLimit(),
-//                    this.getImages());
-//
-//            world.removeEntity(this);
-//            scheduler.unscheduleAllEvents(this);
-//
-//            world.addEntity(miner);
-//            miner.scheduleActions(scheduler, world, imageStore);
-//
-//            return true;
-//        }
-//
-//        return false;
-//    }
+
+    public boolean transformAlienNotFull(
+            WorldModel world,
+            EventScheduler scheduler,
+            ImageStore imageStore)
+    {
+        if (this.resourceCount >= this.getResourceLimit()) {
+            AlienFull alien = Factory.createAlienFull(this.getId(),
+                    this.getPosition(), this.getActionPeriod(),
+                    this.getAnimationPeriod(),
+                    this.getResourceLimit(),
+                    this.getImages(), this.getStart());
+
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
+
+            world.addEntity(alien);
+            alien.scheduleActions(scheduler, world, imageStore);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public Point getStart()
+    {
+        return this.start;
+    }
 }

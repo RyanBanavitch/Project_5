@@ -64,6 +64,28 @@ public class Tree extends Target{
         return false;
     }
 
+    public boolean transformDeadTree(
+            WorldModel world,
+            EventScheduler scheduler,
+            ImageStore imageStore)
+    {
+
+        if(this.getHealth() == -99)
+        {
+            DeadTree dt = Factory.createDeadTree(this.getId(),
+                    this.getPosition(),
+                    imageStore.getImageList(WorldInfo.DEADTREE_KEY));
+
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
+
+            world.addEntity(dt);
+
+            return true;
+        }
+        return false;
+    }
+
 
 
     public void _scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore)
@@ -81,8 +103,8 @@ public class Tree extends Target{
             ImageStore imageStore,
             EventScheduler scheduler)
     {
-
-        if (!this.transformTree(world, scheduler, imageStore)) {
+        if (!this.transformDeadTree(world, scheduler, imageStore) && !this.transformTree(world, scheduler, imageStore))
+        {
 
             scheduler.scheduleEvent(this,
                     Factory.createActivityAction(this, world, imageStore),

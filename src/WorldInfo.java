@@ -86,6 +86,17 @@ public final class WorldInfo
     public static final int TREE_HEALTH_MAX = 3;
     public static final int TREE_HEALTH_MIN = 1;
 
+    public static final String ALIEN_KEY = "alien";
+    public static final int ALIEN_NUM_PROPERTIES = 7;
+    public static final int ALIEN_ID = 1;
+    public static final int ALIEN_COL = 2;
+    public static final int ALIEN_ROW = 3;
+    public static final int ALIEN_LIMIT = 4;
+    public static final int ALIEN_ACTION_PERIOD = 200;
+    public static final int ALIEN_ANIMATION_PERIOD = 6;
+
+    public static final String DEADTREE_KEY = "dtree";
+
 
 
 
@@ -301,6 +312,24 @@ public final class WorldInfo
         }
 
         return properties.length == DUDE_NUM_PROPERTIES;
+    }
+
+    public static boolean parseAlien(
+            String[] properties, WorldModel world, ImageStore imageStore)
+    {
+        if (properties.length == ALIEN_NUM_PROPERTIES) {
+            Point pt = new Point(Integer.parseInt(properties[ALIEN_COL]),
+                    Integer.parseInt(properties[ALIEN_ROW]));
+            Entity entity = Factory.createAlienNotFull(properties[ALIEN_ID],
+                    pt,
+                    Integer.parseInt(properties[ALIEN_ACTION_PERIOD]),
+                    Integer.parseInt(properties[ALIEN_ANIMATION_PERIOD]),
+                    Integer.parseInt(properties[ALIEN_LIMIT]),
+                    imageStore.getImageList(ALIEN_KEY), pt);
+            world.tryAddEntity(entity);
+        }
+
+        return properties.length == ALIEN_NUM_PROPERTIES;
     }
 
     public static boolean parseFairy(

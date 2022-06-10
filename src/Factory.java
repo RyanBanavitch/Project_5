@@ -68,5 +68,10 @@ public class Factory {
         return new AlienNotFull(id, position, images, actionPeriod, animationPeriod, resourceLimit, 0, start);
     }
 
+    public static DeadTree createDeadTree(String id, Point position, List<PImage> images)
+    {
+        return new DeadTree(id, position, images);
+    }
+
 
 }
